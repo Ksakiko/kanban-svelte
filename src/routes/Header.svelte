@@ -1,0 +1,26 @@
+
+<style>
+
+.header {
+  width: 100%;
+  height: var(--header-height);
+  background-color: rgb(127, 127, 201);
+  position: fixed;
+}
+
+.header__inner {
+  height: 100%;
+  width: 100%;
+  padding: 0 var(--page-padding);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+</style>
+
+<header class="header">
+	<div class="header__inner">
+		<div>Kanban Svelte</div>
+	</div>
+</header>
