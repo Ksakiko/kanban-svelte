@@ -46,7 +46,7 @@
   width:100%;
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
+  align-items: flex-start;
   gap: 1rem;
 }
 

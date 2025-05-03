@@ -19,7 +19,7 @@
     };
 
     const handleSubmit = async () => {
-        
+        if (listTitleInput === "") return;
         const newList = {
             title: listTitleInput
         }

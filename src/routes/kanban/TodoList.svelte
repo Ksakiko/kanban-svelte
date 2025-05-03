@@ -114,7 +114,7 @@ const deleteList = async (listId: string) => {
     <header class="todo-list__header">
         <h3 class="todo-list__title">{todoList.title}</h3>
         <div class="todo-list__action">
-        <button onclick={handleDeleteList}>X</button>
+          <button onclick={handleDeleteList}>X</button>
         </div>
     </header>
     <ul class="todo-list__list">
