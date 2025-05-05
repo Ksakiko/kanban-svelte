@@ -3,23 +3,11 @@
   import TodoList from "./TodoList.svelte";
   import ListForm from "./ListForm.svelte";
   import type { List } from "$lib/types/lists";
+  import { getTodoLists } from "../../services/lists";
 
-  const url = "http://localhost:3000/lists"
-
+  
   let todoLists = $state<List[]>([])
-  let newListIsVisible = $state(false)
-
-  const getTodoLists = async () => {
-    newListIsVisible = false
-    try {
-        const res = await fetch(url);
-        const data = await res.json();
-
-        todoLists = await data;
-    } catch (err) {
-        console.error(err);
-  }
-  };
+  let listFormIsVisible = $state(false)
 
   const getTempUpdatedTodoLists = (id: string) => {
     const newList = todoLists.filter(x => x.id !== id)
@@ -27,11 +15,17 @@
   }
 
   const handleAddNewList = () => {
-    newListIsVisible = true;
+    listFormIsVisible = true;
+  }
+
+  const getLists = async () => {
+    listFormIsVisible = false;
+    const data = await getTodoLists();
+    todoLists = data
   }
 
   onMount(() => {
-      getTodoLists();
+      getLists()    
   })
 
 
@@ -63,8 +57,8 @@
         {#each todoLists as todoList}
           <TodoList {todoList} {getTempUpdatedTodoLists}/>
         {/each}
-        {#if (newListIsVisible)}
-          <ListForm {getTodoLists} />
+        {#if (listFormIsVisible)}
+          <ListForm {getLists} />
         {/if}
       </div>  
     </div>

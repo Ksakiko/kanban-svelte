@@ -1,22 +1,10 @@
 <script lang="ts">
-  import type { InputList } from "$lib/types/lists";
+  import { postNewList } from "../../services/lists";
 
-  let { getTodoLists } = $props() 
+  let { getLists } = $props() 
     let listTitleInput = $state("")
 
-    const postNewList = async (list: InputList) => {
-        try {
-            const res = await fetch("http://localhost:3000/lists", {
-            method: "POST",
-            body: JSON.stringify(list),
-            });
-            const data = await res.json();
-            
-            return data;
-        } catch (err) {
-            console.error(err);
-        }
-    };
+    
 
     const handleSubmit = async () => {
         if (listTitleInput === "") return;
@@ -24,7 +12,7 @@
             title: listTitleInput
         }
         await postNewList(newList)
-        await getTodoLists()
+        await getLists()
     }
 </script>
 

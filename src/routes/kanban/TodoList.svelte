@@ -3,27 +3,19 @@
   import TodoForm from "./TodoForm.svelte";
   import TodoItem from "./TodoItem.svelte";
   import type { Todo } from "$lib/types/todos";
+  import { deleteTodo, getTodos } from "../../services/todos";
+  import { deleteList } from "../../services/lists";
 
-  const url = "http://localhost:3000"
   let filteredTodos = $state<Todo[]>([])
   let formIsVisible = $state(false)
   let { todoList, getTempUpdatedTodoLists } =  $props()
 
-  const getTodos = async (url: string) => {
-    try {
-    const res = await fetch(`${url}/todos`);
-    const data = await res.json();
-
-    return data;
-    } catch (err) {
-        console.error(err);
-    }
-  }
+  
 
   const filterTodos = async () => {
     
   formIsVisible = false;
-  const data = await getTodos(url);
+  const data = await getTodos();
 
   const newTodos = await data.filter(
     (todo: Todo) => todo.listId === todoList.id
@@ -52,32 +44,6 @@ const handleDeleteList = async () => {
   // Update the lists realtime in frontend 
   await getTempUpdatedTodoLists(todoList.id)
 }
-
-const deleteTodo = async (todoId: string) => {
-  try {
-    const res = await fetch(`${url}/todos/${todoId}`, {
-      method: "DELETE",
-    });
-    const data = await res.json();
-
-    return data;
-  } catch (err) {
-    console.error(err);
-  }
-};
-
-const deleteList = async (listId: string) => {
-  try {
-    const res = await fetch(`${url}/lists/${listId}`, {
-      method: "DELETE",
-    });
-    const data = await res.json();
-
-    return data;
-  } catch (err) {
-    console.error(err);
-  }
-};
 
   onMount(() => {
       filterTodos();

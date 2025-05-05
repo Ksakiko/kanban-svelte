@@ -1,30 +1,18 @@
 <script lang="ts">
-  import type { InputTodo } from "$lib/types/todos";
+  import { postNewTodo } from "../../services/todos";
 
 
     let { todoList, filterTodos } = $props()
     let todoInput = $state("")
 
-    const postNewTodo = async (todo: InputTodo) => {
-    try {
-        const res = await fetch("http://localhost:3000/todos", {
-        method: "POST",
-        body: JSON.stringify(todo),
-        });
-        const data = await res.json();
-
-        return data;
-    } catch (err) {
-        console.error(err);
-    }
-};
-
+    
     const handleSubmit = async (e: any) => {
         e.preventDefault();
 
         if (todoInput === "") return;
+        console.log("listID", todoList.id);
         
-        const res = await postNewTodo({
+        await postNewTodo({
             todo: todoInput,
             listId: todoList.id,
         });
