@@ -10,7 +10,6 @@
         e.preventDefault();
 
         if (todoInput === "") return;
-        console.log("listID", todoList.id);
         
         await postNewTodo({
             todo: todoInput,

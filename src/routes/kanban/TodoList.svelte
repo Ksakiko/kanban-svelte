@@ -3,7 +3,7 @@
   import TodoForm from "./TodoForm.svelte";
   import TodoItem from "./TodoItem.svelte";
   import type { Todo } from "$lib/types/todos";
-  import { deleteTodo, getTodos } from "../../services/todos";
+  import { deleteMultipleTodos, deleteTodo, getTodos } from "../../services/todos";
   import { deleteList } from "../../services/lists";
 
   let filteredTodos = $state<Todo[]>([])
@@ -38,16 +38,24 @@ const handleAddTodo = () => {
 };
 
 const handleDeleteList = async () => {
+  const todosToBeDeleted = filteredTodos.filter(
+    (x) => x.listId === todoList.id
+  );
+
+  const todoIds = todosToBeDeleted.map((x) => x.id);
+
+  deleteMultipleTodos(todoIds);
+
   // Handle delete in backend
-  await deleteList(todoList.id)
+  deleteList(todoList.id)
 
   // Update the lists realtime in frontend 
-  await getTempUpdatedTodoLists(todoList.id)
+  getTempUpdatedTodoLists(todoList.id)
 }
 
-  onMount(() => {
-      filterTodos();
-  })
+onMount(() => {
+    filterTodos();
+})
 
 
 </script>
