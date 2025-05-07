@@ -4,8 +4,12 @@
 .header {
   width: 100%;
   height: var(--header-height);
-  background-color: rgb(127, 127, 201);
+  background-color: var(--color-light);
+  border-bottom: 1px solid var(--color-gray-light);
   position: fixed;
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: 1.3rem;
 }
 
 .header__inner {

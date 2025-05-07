@@ -26,7 +26,8 @@
   padding: 1rem;
   width: 100%;
   border-radius: 8px;
-  border: none;
+  border: 1px solid var(--color-gray-light);
+  border-radius: 10px;
   font-size: 1rem;
 }
 

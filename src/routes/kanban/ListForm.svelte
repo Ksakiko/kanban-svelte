@@ -20,7 +20,8 @@
 
 .todo-list {
   padding: 1rem;
-  background-color: lightpink; /* temp */
+  border: 2px solid var(--color-gray-light);
+  border-radius: 10px;
   width: 300px;
   min-height: 100px;
   border-radius: 10px;
@@ -32,6 +33,8 @@
   border-radius: 8px;
   border: none;
   font-size: 1rem;
+  border: 1px solid var(--color-gray-light);
+  border-radius: 10px;
 }
 
 </style>
