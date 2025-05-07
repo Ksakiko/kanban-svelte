@@ -63,10 +63,10 @@ onMount(() => {
 <style>
   .todo-list {
   padding: 1rem;
-  background-color: lightpink; /* temp */
+  border: 2px solid var(--color-gray-light);
+  border-radius: 10px;
   width: 300px;
   min-height: 100px;
-  border-radius: 10px;
 }
 
 .todo-list__header {
@@ -88,7 +88,7 @@ onMount(() => {
     <header class="todo-list__header">
         <h3 class="todo-list__title">{todoList.title}</h3>
         <div class="todo-list__action">
-          <button onclick={handleDeleteList}>X</button>
+          <button class="button-delete" onclick={handleDeleteList}>X</button>
         </div>
     </header>
     <ul class="todo-list__list">
