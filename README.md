@@ -1,29 +1,33 @@
 # Kanban Svelte
 
-This is a kanban board application that is built on Svelte.
+This is a Kanban Board application which is built on Svelte. In the current version, you can create new lists and todos and delete them.
+
+# Database
+
+In this project, json server is currently used to simulate a backend system.
 
 # Developing
 
-```
-npm run dev
-```
+1. Clone the repo
 
-The command above runs both frontend and json-server. If you would like to run only frontend use `npm run vite`, or `npm run server` for json-server.
+   Navigate to a directory where you want to clone the repo in the terminal
 
-# or start the server and open the app in a new browser tab
+   Run `git clone https://github.com/Ksakiko/kanban-svelte`
 
-npm run dev -- --open
+2. Install npm packages
 
-````
+   Run `npm i` in the directory where the project is located in the terminal
 
-## Building
+3. Start a local server and backend
 
-To create a production version of your app:
+   Run `npm run dev`
 
-```bash
-npm run build
-````
+   This command line runs both frontend and json-server. If you need to run only frontend use `npm run vite`, or `npm run server` for json-server.
 
-You can preview the production build with `npm run preview`.
+4. Open a web browser to view the application
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+   Copy and paste the link (`http://localhost:5173/`) in a web browser
+
+   or `Ctrl+click` on the link in the terminal (Windows)
+
+   or `Cmd+click` on the link in the terminal (macOS)
