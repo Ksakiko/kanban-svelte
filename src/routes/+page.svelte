@@ -1,5 +1,4 @@
 <script lang="ts">
-	import Counter from './Counter.svelte';
   import KanbanBoard from './kanban/KanbanBoard.svelte';
 
 </script>
@@ -11,9 +10,6 @@
 
 <section class="container__inner">
 	<KanbanBoard />
-
-
-	<!-- <Counter /> -->
 </section>
 
 <style>
